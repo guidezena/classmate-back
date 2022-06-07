@@ -1,0 +1,19 @@
+version: '3'
+services:
+  pi-api:
+    container_name: pi-api
+    build:
+      context: .
+      dockerfile: ./docker/dev.Dockerfile
+    volumes:
+      - /app/node_modules/
+      - .:/app
+    env_file:
+      - ./.env
+    ports:
+      - 3333:3333
+      - 9226:9229
+
+networks:
+  default:
+    name: amplie-network
